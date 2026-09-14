@@ -1,0 +1,1635 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Menú Setmanal Saludable</title>
+
+<style>
+
+/* =========================
+   CONFIGURACIÓ GENERAL
+========================= */
+
+:root {
+    --verd: #527a61;
+    --verd-fosc: #365743;
+    --verd-clar: #e8f1ea;
+    --verd-molt-clar: #f5f9f5;
+
+    --taronja: #c77c5b;
+    --taronja-clar: #f8eee9;
+
+    --groc: #fff3b8;
+
+    --fons: #f7f5ef;
+    --blanc: #ffffff;
+    --text: #26352c;
+    --gris: #68736d;
+    --vora: #dce4de;
+
+    --ombra: 0 5px 18px rgba(40,60,45,.09);
+}
+
+
+/* =========================
+   COS
+========================= */
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Roboto,
+        Arial,
+        sans-serif;
+
+    background: var(--fons);
+    color: var(--text);
+}
+
+
+/* =========================
+   CONTENIDOR
+========================= */
+
+.container {
+    max-width: 1500px;
+    margin: auto;
+    padding: 25px;
+}
+
+
+/* =========================
+   CAPÇALERA
+========================= */
+
+header {
+    background: linear-gradient(
+        135deg,
+        var(--verd-fosc),
+        var(--verd)
+    );
+
+    color: white;
+
+    border-radius: 22px;
+
+    padding: 30px;
+
+    margin-bottom: 20px;
+
+    box-shadow: var(--ombra);
+}
+
+header h1 {
+    margin: 0 0 8px;
+
+    font-size: clamp(28px, 4vw, 42px);
+}
+
+header p {
+    margin: 0;
+
+    max-width: 850px;
+
+    opacity: .92;
+}
+
+
+/* =========================
+   INFORMACIÓ
+========================= */
+
+.info {
+    background: var(--blanc);
+
+    border: 1px solid var(--vora);
+
+    border-radius: 18px;
+
+    padding: 18px 22px;
+
+    margin-bottom: 20px;
+
+    box-shadow: var(--ombra);
+}
+
+.info-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(190px, 1fr));
+
+    gap: 12px;
+}
+
+.info-item {
+    background: var(--verd-molt-clar);
+
+    padding: 12px;
+
+    border-radius: 12px;
+
+    font-size: 14px;
+}
+
+.info-item strong {
+    color: var(--verd-fosc);
+}
+
+
+/* =========================
+   BOTONS
+========================= */
+
+.controls {
+    display: flex;
+
+    gap: 10px;
+
+    flex-wrap: wrap;
+
+    margin-bottom: 18px;
+}
+
+button {
+    border: none;
+
+    border-radius: 10px;
+
+    padding: 10px 15px;
+
+    cursor: pointer;
+
+    font-size: 14px;
+
+    background: var(--verd);
+
+    color: white;
+}
+
+button:hover {
+    background: var(--verd-fosc);
+}
+
+
+/* =========================
+   CONTENIDOR DE LA TAULA
+========================= */
+
+.table-container {
+    background: white;
+
+    border-radius: 20px;
+
+    box-shadow: var(--ombra);
+
+    overflow-x: auto;
+
+    border: 1px solid var(--vora);
+}
+
+
+/* =========================
+   TAULA
+========================= */
+
+table {
+    width: 100%;
+
+    border-collapse: separate;
+
+    border-spacing: 0;
+
+    min-width: 1100px;
+}
+
+
+/* =========================
+   CAPÇALERA DELS DIES
+========================= */
+
+thead th {
+    position: sticky;
+
+    top: 0;
+
+    z-index: 5;
+
+    background: var(--verd-clar);
+
+    color: var(--verd-fosc);
+
+    padding: 16px 10px;
+
+    text-align: center;
+
+    border-bottom: 2px solid var(--vora);
+
+    font-size: 15px;
+}
+
+thead th:first-child {
+    min-width: 120px;
+}
+
+
+/* DIA ACTUAL */
+
+.today {
+    background: var(--groc) !important;
+
+    color: #594d16 !important;
+
+    position: relative;
+}
+
+.today::after {
+    content: "AVUI";
+
+    display: block;
+
+    font-size: 10px;
+
+    font-weight: bold;
+
+    margin-top: 4px;
+
+    color: #8b7715;
+}
+
+
+/* =========================
+   FILES
+========================= */
+
+tbody th {
+    background: var(--verd-molt-clar);
+
+    color: var(--verd-fosc);
+
+    padding: 15px 12px;
+
+    text-align: left;
+
+    vertical-align: top;
+
+    border-right: 1px solid var(--vora);
+
+    border-bottom: 1px solid var(--vora);
+
+    position: sticky;
+
+    left: 0;
+
+    z-index: 3;
+}
+
+tbody td {
+    padding: 14px;
+
+    vertical-align: top;
+
+    border-right: 1px solid var(--vora);
+
+    border-bottom: 1px solid var(--vora);
+
+    min-width: 145px;
+
+    line-height: 1.45;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   COLUMNA DEL DIA ACTUAL
+========================= */
+
+td.current-day {
+    background: #fffbea;
+
+    box-shadow:
+        inset 3px 0 0 #e0c84a,
+        inset -3px 0 0 #e0c84a;
+}
+
+
+/* =========================
+   NOM DE L'ÀPAT
+========================= */
+
+.meal-name {
+    font-weight: 700;
+
+    font-size: 14px;
+
+    display: block;
+
+    margin-bottom: 3px;
+}
+
+
+/* =========================
+   TEMPS
+========================= */
+
+.time {
+    display: inline-block;
+
+    background: var(--taronja-clar);
+
+    color: #81543f;
+
+    border-radius: 10px;
+
+    padding: 3px 7px;
+
+    font-size: 10px;
+
+    margin-top: 4px;
+}
+
+
+/* =========================
+   RACIONS
+========================= */
+
+.portions {
+    margin-top: 8px;
+
+    padding: 8px;
+
+    background: var(--verd-molt-clar);
+
+    border-radius: 8px;
+
+    font-size: 11px;
+}
+
+.portions div {
+    margin-bottom: 3px;
+}
+
+.woman {
+    color: #8a5a49;
+}
+
+.man {
+    color: var(--verd-fosc);
+}
+
+
+/* =========================
+   FRUITA
+========================= */
+
+.fruit {
+    display: inline-block;
+
+    margin-top: 6px;
+
+    padding: 3px 7px;
+
+    border-radius: 8px;
+
+    background: #f6efe7;
+
+    color: #795a47;
+
+    font-size: 11px;
+}
+
+
+/* =========================
+   CHECKBOX
+========================= */
+
+.check {
+    margin-top: 8px;
+
+    display: flex;
+
+    align-items: center;
+
+    gap: 5px;
+
+    font-size: 11px;
+
+    color: var(--gris);
+}
+
+.check input {
+    accent-color: var(--verd);
+
+    cursor: pointer;
+}
+
+
+/* =========================
+   RESUM
+========================= */
+
+.summary {
+    margin-top: 22px;
+
+    background: white;
+
+    border: 1px solid var(--vora);
+
+    border-radius: 18px;
+
+    padding: 20px;
+
+    box-shadow: var(--ombra);
+}
+
+.summary h2 {
+    margin-top: 0;
+
+    color: var(--verd-fosc);
+}
+
+.summary-grid {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fit, minmax(200px, 1fr));
+
+    gap: 12px;
+}
+
+.summary-card {
+    padding: 14px;
+
+    border-radius: 12px;
+
+    background: var(--verd-molt-clar);
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   AVÍS
+========================= */
+
+.warning {
+    margin-top: 20px;
+
+    background: #fff7ed;
+
+    border-left: 5px solid var(--taronja);
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    font-size: 13px;
+}
+
+
+/* =========================
+   IMPRESSIÓ
+========================= */
+
+@media print {
+
+    body {
+        background: white;
+    }
+
+    .controls {
+        display: none;
+    }
+
+    header {
+        box-shadow: none;
+    }
+
+    .table-container {
+        box-shadow: none;
+        overflow: visible;
+    }
+
+    table {
+        min-width: 0;
+    }
+
+    thead th {
+        position: static;
+    }
+
+    tbody th {
+        position: static;
+    }
+
+    .check {
+        display: none;
+    }
+
+    .today {
+        background: #fff3b8 !important;
+    }
+}
+
+
+/* =========================
+   MÒBIL
+========================= */
+
+@media(max-width:700px) {
+
+    .container {
+        padding: 10px;
+    }
+
+    header {
+        padding: 22px;
+    }
+
+    header h1 {
+        font-size: 28px;
+    }
+
+    .info-grid {
+        grid-template-columns: 1fr 1fr;
+    }
+
+}
+
+</style>
+</head>
+
+
+<body>
+
+<div class="container">
+
+
+<!-- =========================
+     CAPÇALERA
+========================= -->
+
+<header>
+
+    <h1>🥗 Menú Setmanal Saludable</h1>
+
+    <p>
+        Menú vegetariano mediterrani, ric en proteïna,
+        amb poca sal i sense fregits ni ultraprocessats.
+        Pensat per afavorir el control de la glucosa,
+        colesterol i pressió arterial i preservar la massa muscular.
+    </p>
+
+</header>
+
+
+<!-- =========================
+     INFORMACIÓ
+========================= -->
+
+<section class="info">
+
+    <div class="info-grid">
+
+        <div class="info-item">
+            👩 <strong>Dona</strong><br>
+            72 anys · 70 kg · 175 cm
+        </div>
+
+        <div class="info-item">
+            👨 <strong>Home</strong><br>
+            70 anys · 85 kg · 180 cm
+        </div>
+
+        <div class="info-item">
+            🏋️ <strong>Activitat</strong><br>
+            Gimnàs 3 dies/setmana
+        </div>
+
+        <div class="info-item">
+            🚶 <strong>Caminada</strong><br>
+            8 km aproximadament/setmana
+        </div>
+
+        <div class="info-item">
+            🌱 <strong>Alimentació</strong><br>
+            Vegetariana
+        </div>
+
+        <div class="info-item">
+            🍎 <strong>Fruita</strong><br>
+            1 peça/dia
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =========================
+     CONTROLS
+========================= -->
+
+<div class="controls">
+
+    <button onclick="anarAvui()">
+        📅 Anar a avui
+    </button>
+
+    <button onclick="marcarDia()">
+        ☑️ Marcar àpats d'avui
+    </button>
+
+    <button onclick="window.print()">
+        🖨️ Imprimir
+    </button>
+
+</div>
+
+
+<!-- =========================
+     TAULA
+========================= -->
+
+<div class="table-container">
+
+<table id="menuTable">
+
+<thead>
+
+<tr>
+
+<th>ÀPAT</th>
+
+<th data-day="1">Dilluns</th>
+
+<th data-day="2">Dimarts</th>
+
+<th data-day="3">Dimecres</th>
+
+<th data-day="4">Dijous</th>
+
+<th data-day="5">Divendres</th>
+
+<th data-day="6">Dissabte</th>
+
+<th data-day="0">Diumenge</th>
+
+</tr>
+
+</thead>
+
+
+<tbody>
+
+
+<!-- =========================
+     ESMORZAR
+========================= -->
+
+<tr>
+
+<th>
+<span class="meal-name">🌅 Esmorzar</span>
+<span class="time">≤ 10 min</span>
+</th>
+
+
+<td>
+
+<strong>Skyr + civada</strong><br>
+Nous + canyella
+
+<div class="portions">
+
+<div class="woman">
+👩 200 g skyr<br>
+30 g civada · 15 g nous
+</div>
+
+<div class="man">
+👨 250 g skyr<br>
+40 g civada · 15 g nous
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Pa integral</strong><br>
+Formatge fresc + tomàquet
+
+<div class="portions">
+
+<div class="woman">
+👩 60 g pa · 60 g formatge
+</div>
+
+<div class="man">
+👨 80 g pa · 80 g formatge
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Skyr + civada</strong><br>
+Xia + ½ poma
+
+<div class="portions">
+
+<div class="woman">
+👩 200 g skyr · 30 g civada
+</div>
+
+<div class="man">
+👨 250 g skyr · 40 g civada
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Pa integral</strong><br>
+Crema de tofu + tomàquet + ou
+
+<div class="portions">
+
+<div class="woman">
+👩 60 g pa · 1 ou
+</div>
+
+<div class="man">
+👨 80 g pa · 2 ous
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Skyr + civada</strong><br>
+Nous + canyella
+
+<div class="portions">
+
+<div class="woman">
+👩 200 g skyr · 30 g civada
+</div>
+
+<div class="man">
+👨 250 g skyr · 40 g civada
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Torrades integrals</strong><br>
+Formatge fresc + tomàquet
+
+<div class="portions">
+
+<div class="woman">
+👩 60 g pa · 60 g formatge
+</div>
+
+<div class="man">
+👨 80 g pa · 80 g formatge
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Skyr + civada</strong><br>
+Nous + canyella
+
+<div class="portions">
+
+<div class="woman">
+👩 200 g skyr · 30 g civada
+</div>
+
+<div class="man">
+👨 250 g skyr · 40 g civada
+</div>
+
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+</tr>
+
+
+<!-- =========================
+     DINAR
+========================= -->
+
+<tr>
+
+<th>
+<span class="meal-name">☀️ Dinar</span>
+<span class="time">≤ 30 min</span>
+</th>
+
+
+<td>
+
+<strong>Llenties amb verdures</strong><br>
+Carbassó · pebrot · ceba · tomàquet
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g llenties<br>
+40 g pa integral
+</div>
+
+<div class="man">
+👨 230 g llenties<br>
+60 g pa integral
+</div>
+
+</div>
+
+<span class="fruit">🍎 Poma o pera</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Tofu + quinoa</strong><br>
+Bròquil · pastanaga · carbassó · pebrot
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g tofu<br>
+120 g quinoa cuita
+</div>
+
+<div class="man">
+👨 220 g tofu<br>
+160 g quinoa cuita
+</div>
+
+</div>
+
+<span class="fruit">🥝 Kiwi</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Mongetes blanques</strong><br>
+Espinacs · tomàquet · ceba · pebrot + ou
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g mongetes<br>
+1 ou · 40 g pa
+</div>
+
+<div class="man">
+👨 230 g mongetes<br>
+2 ous · 60 g pa
+</div>
+
+</div>
+
+<span class="fruit">🍐 Pera</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Pasta integral + tofu</strong><br>
+Tomàquet · carbassó · xampinyons · espinacs
+
+<div class="portions">
+
+<div class="woman">
+👩 60 g pasta en cru<br>
+150 g tofu
+</div>
+
+<div class="man">
+👨 80 g pasta en cru<br>
+200 g tofu
+</div>
+
+</div>
+
+<span class="fruit">🍊 Mandarina o taronja</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Llenties + arròs integral</strong><br>
+Carbassó · pastanaga · pebrot · ceba
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g llenties<br>
+100 g arròs cuit
+</div>
+
+<div class="man">
+👨 230 g llenties<br>
+140 g arròs cuit
+</div>
+
+</div>
+
+<span class="fruit">🍎 Poma</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Tofu + patata</strong><br>
+Verdures variades + amanida
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g tofu<br>
+150 g patata
+</div>
+
+<div class="man">
+👨 220 g tofu<br>
+200 g patata
+</div>
+
+</div>
+
+<span class="fruit">🥝 Kiwi o pera</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+<strong>Mongetes o llenties</strong><br>
+Quinoa/arròs + verdures
+
+<div class="portions">
+
+<div class="woman">
+👩 180 g llegum<br>
+100 g cereal cuit
+</div>
+
+<div class="man">
+👨 230 g llegum<br>
+140 g cereal cuit
+</div>
+
+</div>
+
+<span class="fruit">🍐 1 peça</span>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+</tr>
+
+
+<!-- =========================
+     BERENAR
+========================= -->
+
+<tr>
+
+<th>
+<span class="meal-name">☕ Berenar</span>
+</th>
+
+
+<td>
+
+Iogurt proteic + ametlles
+
+<div class="portions">
+👩 150 g + 10 g ametlles<br>
+👨 200 g + 10 g ametlles
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Skyr + nous
+
+<div class="portions">
+👩 150 g + 10 g nous<br>
+👨 200 g + 15 g nous
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Iogurt + ametlles
+
+<div class="portions">
+👩 150 g + 10 g<br>
+👨 200 g + 15 g
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Skyr + nous
+
+<div class="portions">
+👩 150 g + 10 g<br>
+👨 200 g + 15 g
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Iogurt + ametlles
+
+<div class="portions">
+👩 150 g + 10 g<br>
+👨 200 g + 15 g
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Iogurt/skyr + nous
+
+<div class="portions">
+👩 150 g + 15 g<br>
+👨 200 g + 15 g
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Iogurt/skyr + ametlles
+
+<div class="portions">
+👩 150 g + 10 g<br>
+👨 200 g + 15 g
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+</tr>
+
+
+<!-- =========================
+     SOPAR
+========================= -->
+
+<tr>
+
+<th>
+<span class="meal-name">🌙 Sopar</span>
+<span class="time">Ràpid</span>
+</th>
+
+
+<td>
+
+Truita de carbassó + xampinyons<br>
+Amanida + pa integral
+
+<div class="portions">
+👩 2 ous · 30 g pa<br>
+👨 3 ous · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Crema de carbassó + tofu<br>
+Amanida + pa integral
+
+<div class="portions">
+👩 150 g tofu · 30 g pa<br>
+👨 200 g tofu · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Truita + espàrrecs + xampinyons<br>
+Amanida + pa
+
+<div class="portions">
+👩 2 ous · 30 g pa<br>
+👨 3 ous · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Amanida gran + tofu<br>
+Tomàquet · cogombre · pastanaga
+
+<div class="portions">
+👩 150 g tofu · 30 g pa<br>
+👨 200 g tofu · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Ous remenats + espinacs<br>
+Xampinyons + formatge fresc
+
+<div class="portions">
+👩 2 ous · 40 g formatge<br>
+👨 3 ous · 60 g formatge
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Crema de verdures + truita<br>
+Pa integral
+
+<div class="portions">
+👩 2 ous · 30 g pa<br>
+👨 3 ous · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+
+<td>
+
+Amanida completa + tofu + ou<br>
+Pa integral
+
+<div class="portions">
+👩 150 g tofu · 1 ou · 30 g pa<br>
+👨 200 g tofu · 2 ous · 40 g pa
+</div>
+
+<div class="check">
+<input type="checkbox">
+Fet
+</div>
+
+</td>
+
+</tr>
+
+
+</tbody>
+
+</table>
+
+</div>
+
+
+<!-- =========================
+     RESUM
+========================= -->
+
+<section class="summary">
+
+<h2>💚 Punts clau de la setmana</h2>
+
+<div class="summary-grid">
+
+<div class="summary-card">
+💪 <strong>Proteïna</strong><br>
+Repartida durant els quatre àpats per ajudar
+a mantenir la massa muscular.
+</div>
+
+<div class="summary-card">
+🥦 <strong>Verdura</strong><br>
+Prioritzar una bona quantitat a dinar i sopar.
+</div>
+
+<div class="summary-card">
+🌾 <strong>Fibra</strong><br>
+Llegums, civada, cereals integrals,
+verdures i fruits secs.
+</div>
+
+<div class="summary-card">
+🧂 <strong>Sal</strong><br>
+Utilitzar poca sal i potenciar herbes,
+espècies, all, llimona i vinagre.
+</div>
+
+<div class="summary-card">
+🍎 <strong>Fruita</strong><br>
+1 peça sencera al dia, evitant sucs.
+</div>
+
+<div class="summary-card">
+🫒 <strong>Greixos</strong><br>
+Prioritzar oli d'oliva verge extra
+i petites quantitats de fruits secs.
+</div>
+
+</div>
+
+</section>
+
+
+<!-- =========================
+     AVÍS
+========================= -->
+
+<div class="warning">
+
+<strong>⚠️ Important</strong><br>
+
+Aquest menú és una proposta d'alimentació saludable i no substitueix
+les indicacions del vostre metge o dietista.
+
+Atès que hi ha hipertensió, colesterol elevat i prediabetis,
+qualsevol canvi important en la dieta o suplementació s'hauria
+de comentar amb el professional sanitari.
+
+No utilitzeu substituts de la sal rics en potassi sense
+consultar-ho abans.
+
+</div>
+
+
+</div>
+
+
+<!-- =========================
+     JAVASCRIPT
+========================= -->
+
+<script>
+
+/*
+=========================================
+  DETECTAR EL DIA ACTUAL
+=========================================
+
+JavaScript retorna:
+
+0 = diumenge
+1 = dilluns
+2 = dimarts
+3 = dimecres
+4 = dijous
+5 = divendres
+6 = dissabte
+*/
+
+function destacarAvui() {
+
+    const avui = new Date();
+
+    const diaActual = avui.getDay();
+
+    /*
+    Busquem la capçalera que correspon
+    al dia actual.
+    */
+
+    const capcalera =
+        document.querySelector(
+            `thead th[data-day="${diaActual}"]`
+        );
+
+    if (!capcalera) return;
+
+
+    /*
+    Destaquem la capçalera.
+    */
+
+    capcalera.classList.add("today");
+
+
+    /*
+    Obtenim la posició de la columna.
+    */
+
+    const columnes =
+        Array.from(
+            capcalera.parentElement.children
+        );
+
+    const index =
+        columnes.indexOf(capcalera);
+
+
+    /*
+    Destaquem totes les cel·les
+    de la mateixa columna.
+    */
+
+    const files =
+        document.querySelectorAll(
+            "#menuTable tbody tr"
+        );
+
+    files.forEach(fila => {
+
+        const cel·la =
+            fila.children[index];
+
+        if (cel·la) {
+
+            cel·la.classList.add(
+                "current-day"
+            );
+
+        }
+
+    });
+
+}
+
+
+/*
+=========================================
+  ANAR AL DIA ACTUAL
+=========================================
+*/
+
+function anarAvui() {
+
+    const avui =
+        document.querySelector(".today");
+
+    if (avui) {
+
+        avui.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+            inline: "center"
+        });
+
+    }
+
+}
+
+
+/*
+=========================================
+  MARCAR ELS ÀPATS D'AVUI
+=========================================
+*/
+
+function marcarDia() {
+
+    const avui =
+        new Date().getDay();
+
+    const capcalera =
+        document.querySelector(
+            `thead th[data-day="${avui}"]`
+        );
+
+    if (!capcalera) return;
+
+    const index =
+        Array.from(
+            capcalera.parentElement.children
+        ).indexOf(capcalera);
+
+    const files =
+        document.querySelectorAll(
+            "#menuTable tbody tr"
+        );
+
+    files.forEach(fila => {
+
+        const cel·la =
+            fila.children[index];
+
+        if (!cel·la) return;
+
+        const checkbox =
+            cel·la.querySelector(
+                'input[type="checkbox"]'
+            );
+
+        if (checkbox) {
+
+            checkbox.checked = true;
+
+        }
+
+    });
+
+}
+
+
+/*
+=========================================
+  EXECUTAR EN CARREGAR LA PÀGINA
+=========================================
+*/
+
+document.addEventListener(
+    "DOMContentLoaded",
+    destacarAvui
+);
+
+</script>
+
+</body>
+</html>
+```
