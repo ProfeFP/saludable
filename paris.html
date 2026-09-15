@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="ca">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>París 17–20 novembre 2026 · Guia 100% gratuïta</title>
+<style>
+:root{
+  --ink:#243044; --muted:#687386; --bg:#f6f7fb; --card:#fff; --line:#e6e9ef;
+  --accent:#7c3aed; --accent2:#0f766e; --gold:#b7791f; --soft:#f0e9ff;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;line-height:1.55}
+header{background:linear-gradient(135deg,#24103d,#5b2a86 55%,#0f766e);color:white;padding:42px 20px 34px}
+.wrap{max-width:1100px;margin:auto}
+h1{font-size:clamp(2rem,5vw,3.8rem);line-height:1.03;margin:8px 0 14px}
+h2{margin-top:0;font-size:1.65rem}
+h3{margin-bottom:7px}
+.subtitle{font-size:1.08rem;max-width:780px;opacity:.92}
+.badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:20px}
+.badge{background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.25);padding:7px 11px;border-radius:999px;font-size:.9rem}
+nav{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--line);overflow:auto}
+nav .wrap{display:flex;gap:8px;padding:9px 12px}
+nav a{white-space:nowrap;text-decoration:none;color:var(--ink);font-weight:700;font-size:.9rem;padding:8px 11px;border-radius:10px}
+nav a:hover{background:var(--soft)}
+main{padding:26px 14px 60px}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:16px}
+.card{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:20px;box-shadow:0 5px 20px rgba(35,42,60,.05)}
+.card.highlight{border-color:#d8c7ff;background:linear-gradient(180deg,#fff,#faf7ff)}
+.kpi{font-size:1.65rem;font-weight:800}
+.small{font-size:.9rem;color:var(--muted)}
+.note{border-left:4px solid var(--accent2);background:#ecfdf5;padding:13px 15px;border-radius:10px;margin:14px 0}
+.warn{border-left:4px solid var(--gold);background:#fff8e7;padding:13px 15px;border-radius:10px;margin:14px 0}
+.day{margin:28px 0}
+.dayhead{display:flex;gap:12px;align-items:center;margin-bottom:12px}
+.daynum{background:var(--accent);color:white;border-radius:13px;padding:9px 12px;font-weight:800}
+.timeline{display:grid;gap:10px}
+.stop{display:grid;grid-template-columns:88px 1fr;gap:13px;padding:14px;border:1px solid var(--line);border-radius:14px;background:white}
+.time{font-weight:800;color:var(--accent)}
+.free{color:#087f5b;font-weight:800}
+.rest{background:#f8fafc}
+.route{font-size:.92rem;color:#4b5563;margin-top:5px}
+.actions{display:flex;flex-wrap:wrap;gap:7px;margin-top:9px}
+.btn{display:inline-block;padding:7px 10px;border-radius:9px;text-decoration:none;background:#f1f3f7;color:#283245;font-size:.84rem;font-weight:700}
+.btn.primary{background:var(--soft);color:#5b21b6}
+table{width:100%;border-collapse:collapse;background:white;border-radius:14px;overflow:hidden}
+th,td{padding:11px;border-bottom:1px solid var(--line);text-align:left;vertical-align:top}
+th{background:#f4f5f8}
+details{background:white;border:1px solid var(--line);border-radius:13px;padding:12px 15px;margin:9px 0}
+summary{font-weight:800;cursor:pointer}
+.phrase{display:grid;grid-template-columns:1fr 1fr 1.1fr;gap:10px;padding:9px 0;border-bottom:1px solid var(--line)}
+footer{background:#202938;color:#dbe2ee;padding:30px 14px}
+a{color:#5b21b6}
+@media(max-width:650px){
+  .stop{grid-template-columns:70px 1fr}
+  .phrase{grid-template-columns:1fr}
+  table{font-size:.9rem}
+}
+
+.imggrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px;margin-top:14px}
+.imgcard{background:#fff;border:1px solid var(--line);border-radius:16px;overflow:hidden;box-shadow:0 5px 18px rgba(35,42,60,.05)}
+.imgcard img{width:100%;height:180px;object-fit:cover;display:block}
+.imgcard div{padding:12px 14px;font-weight:800}
+@media(max-width:650px){.imgcard img{height:160px}}
+</style>
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3V4mF6jQm0GfY8pGm8VfZ5n4v5f8=" crossorigin=""/><style>
+#parisMap{height:620px;border-radius:16px;border:1px solid var(--line);overflow:hidden;margin-top:14px}
+.maplegend{display:flex;flex-wrap:wrap;gap:8px;margin:10px 0}
+.legend{padding:6px 9px;border-radius:999px;background:#f1f3f7;font-size:.84rem;font-weight:700}
+.leaflet-popup-content{font-size:14px;line-height:1.45}
+</style></head>
+<body>
+<header>
+<div class="wrap">
+<div>🇫🇷 GUIA DE PARÍS · 5 AMICS JUBILATS</div>
+<h1>París sense presses<br>i sense pagar entrades</h1>
+<div class="subtitle">17–20 de novembre de 2026 · 4 dies · Barri Llatí · ritme equilibrat · metro + bus · aproximadament 5–8 km/dia</div>
+<div class="badges">
+<span class="badge">🆓 Visites gratuïtes prioritàries</span>
+<span class="badge">🚇 Metro + 🚌 bus</span>
+<span class="badge">☕ Pausa cada 1,5–2 h</span>
+<span class="badge">🇫🇷 Francès + pronunciació</span>
+</div>
+</div>
+</header>
+
+<nav><div class="wrap">
+<a href="#resum">Resum</a><a href="#hotel">Hotel</a><a href="#dia1">Dimarts 17</a><a href="#dia2">Dimecres 18</a>
+<a href="#dia3">Dijous 19</a><a href="#dia4">Divendres 20</a><a href="#menjar">Menjar</a><a href="#frances">Francès</a><a href="#mapa">Mapes</a>
+</div></nav>
+
+<main class="wrap">
+<section class="card" style="margin-top:18px">
+<h2>📸 París en imatges</h2>
+<p class="small">Una selecció visual dels llocs principals de la ruta. Les fotografies s'obren com a referència visual; els horaris i accessos s'han de comprovar abans de la visita.</p>
+<div class="imggrid">
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1502602898657-3e91760cbb34?auto=format&fit=crop&w=900&q=80" alt="París i la Torre Eiffel"><div>🗼 Torre Eiffel · exterior</div></div>
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1549144511-f099e773c147?auto=format&fit=crop&w=900&q=80" alt="Notre-Dame de París"><div>⛪ Notre-Dame</div></div>
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1503917988258-f87a78e3c995?auto=format&fit=crop&w=900&q=80" alt="Montmartre París"><div>🎨 Montmartre</div></div>
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1500534623283-312aade485b7?auto=format&fit=crop&w=900&q=80" alt="Carrers de París"><div>🏘️ Carrers parisencs</div></div>
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1581264593685-17f67bca7f0a?auto=format&fit=crop&w=900&q=80" alt="Jardí de Luxemburg"><div>🌳 Jardin du Luxembourg</div></div>
+<div class="imgcard"><img src="https://images.unsplash.com/photo-1591857177580-dc82b9ac4e1e?auto=format&fit=crop&w=900&q=80" alt="Marais París"><div>🏛️ Le Marais</div></div>
+</div>
+</section>
+
+<section id="resum" class="card highlight">
+<h2>🧭 El pla en una mirada</h2>
+<div class="grid">
+<div><div class="kpi">17/11</div><b>Île de la Cité + Notre-Dame + Sena</b><p class="small">Història i grans monuments, amb interiors gratuïts quan sigui possible.</p></div>
+<div><div class="kpi">18/11</div><b>Montmartre + Sacré-Cœur</b><p class="small">Barris, panoràmiques i ambient parisenc.</p></div>
+<div><div class="kpi">19/11</div><b>Marais + Carnavalet + Hôtel de Ville</b><p class="small">Història de París i un dels millors museus gratuïts.</p></div>
+<div><div class="kpi">20/11</div><b>Mercat + Saint-Germain + Luxemburg</b><p class="small">Dia més tranquil: mercat, barris, cafès i vida local.</p></div>
+</div>
+<div class="note"><b>Regla d'or:</b> les col·leccions permanents dels museus municipals de Paris Musées són gratuïtes, amb algunes excepcions. Les exposicions temporals solen ser de pagament. Per això aquesta ruta prioritza les permanents i els espais públics.</div>
+</section>
+
+<section id="hotel" class="card" style="margin-top:18px">
+<h2>🏨 Allotjament: Barri Llatí</h2>
+<p><b>Objectiu:</b> 2 habitacions dobles + 1 individual, esmorzar, 3 nits, pressupost orientatiu 400–500 € per nit en total.</p>
+<div class="grid">
+<div>
+<h3>⭐ Opció de millor relació ubicació/preu</h3>
+<p><b>Hôtel Saint-Christophe</b>, 17 rue Lacépède, 75005.</p>
+<p>Ofereix configuracions <b>Single, Double i Twin</b>; l'esmorzar continental se serveix de 7:00 a 10:00. Les tarifes publicades de les habitacions parteixen d'uns 105 € single i 115 € doble/twin, però <b>no són una cotització per al novembre de 2026</b>.</p>
+<a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Hotel+Saint+Christophe+17+Rue+Lacepede+75005+Paris" target="_blank">📍 Google Maps</a>
+<a class="btn" href="https://hotel-saint-christophe.eu/" target="_blank">Web oficial</a>
+</div>
+<div>
+<h3>🌿 Alternativa més confortable</h3>
+<p><b>Hôtel Jardin de Cluny</b>, 9 rue du Sommerard.</p>
+<p>Hotel 4★ molt ben situat; disposa d'esmorzar buffet ecològic, però es cobra a part. Caldria demanar tarifa amb esmorzar inclòs i comprovar les 3 habitacions.</p>
+<a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Hotel+Jardin+de+Cluny+9+Rue+du+Sommerard+Paris" target="_blank">📍 Google Maps</a>
+<a class="btn" href="https://www.hoteljardindecluny.com/" target="_blank">Web oficial</a>
+</div>
+<div>
+<h3>🏛️ Alternativa amb molt d'encant</h3>
+<p><b>Hôtel des Grandes Écoles</b>, 75 rue Cardinal Lemoine.</p>
+<p>Valoració molt alta i jardí interior. Té habitacions dobles/twin i esmorzar continental; és una opció a comparar si el preu total entra al pressupost.</p>
+<a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Hotel+des+Grandes+Ecoles+75+Rue+Cardinal+Lemoine+Paris" target="_blank">📍 Google Maps</a>
+<a class="btn" href="https://en.hoteldesgrandesecoles.com/" target="_blank">Web oficial</a>
+</div>
+</div>
+<div class="warn"><b>Important:</b> les tarifes d'hotel canvien segons dates i condicions. Abans de reservar, confirmeu específicament <b>17–20/11/2026, 5 persones, 2 dobles + 1 individual i esmorzar inclòs</b>. Aquesta guia no considera cap preu actual com una reserva confirmada.</div>
+</section>
+
+<section id="dia1" class="day">
+<div class="dayhead"><span class="daynum">DIMARTS 17</span><h2>🏛️ Île de la Cité · Notre-Dame · Sena</h2></div>
+<div class="card">
+<div class="timeline">
+<div class="stop"><div class="time">08:00</div><div><b>Esmorzar i sortida</b><div class="route">Des del Barri Llatí: caminar cap a Saint-Michel.</div></div></div>
+<div class="stop"><div class="time">08:45</div><div><b>Place Saint-Michel + Pont Saint-Michel</b><div class="route">Passeig curt fins a la Île de la Cité. Exterior i fotografies.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Place+Saint-Michel+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">09:15</div><div><b>Notre-Dame de Paris</b> <span class="free">· GRATUÏTA</span><div class="route">Entrada individual gratuïta; es pot reservar franja per reduir la cua. No incloure les torres: són de pagament.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Notre-Dame+de+Paris" target="_blank">📍 Mapa</a><a class="btn" href="https://www.notredamedeparis.fr/" target="_blank">Web oficial</a></div></div></div>
+<div class="stop rest"><div class="time">10:30</div><div><b>☕ Pausa</b><div class="route">Plaça/parcs de l'Île de la Cité o cafè tranquil del Quartier Latin.</div></div></div>
+<div class="stop"><div class="time">11:00</div><div><b>Marché aux Fleurs + Hôtel de Ville</b><div class="route">Passeig pel Sena fins al Pont d'Arcole i façana de l'Hôtel de Ville.</div></div></div>
+<div class="stop"><div class="time">12:30</div><div><b>Dinar econòmic</b><div class="route">Tornar cap al Barri Llatí.</div></div></div>
+<div class="stop"><div class="time">14:00</div><div><b>Musée de Cluny — exterior + barri medieval</b><div class="route">La visita interior del museu és de pagament; aprofiteu l'entorn i les Termes de Cluny des de l'exterior.</div></div></div>
+<div class="stop"><div class="time">15:15</div><div><b>Jardin du Luxembourg</b> <span class="free">· GRATUÏT</span><div class="route">Passeig pausat, bancs i descans. Ideal per recuperar cames.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Jardin+du+Luxembourg+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">17:00</div><div><b>Retorn cap a l'hotel</b><div class="route">A mitjan novembre ja fosqueja aviat: millor acabar els grans espais exteriors abans.</div></div></div>
+<div class="stop"><div class="time">19:00</div><div><b>Sopar prop de l'hotel</b><div class="route">Vegeu la selecció de restaurants més avall.</div></div></div>
+</div></div>
+</section>
+
+<section id="dia2" class="day">
+<div class="dayhead"><span class="daynum">DIMECRES 18</span><h2>🎨 Montmartre · Sacré-Cœur · artistes</h2></div>
+<div class="card"><div class="timeline">
+<div class="stop"><div class="time">08:00</div><div><b>Sortida</b><div class="route">Metro/bus cap a Montmartre. Recomanació: anar fins a Abbesses i fer només una part del recorregut a peu.</div></div></div>
+<div class="stop"><div class="time">09:00</div><div><b>Place des Abbesses + Rue des Abbesses</b><div class="route">Començament tranquil del barri i ambient local.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Place+des+Abbesses+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">10:00</div><div><b>Basílica del Sacré-Cœur</b> <span class="free">· GRATUÏTA</span><div class="route">Entrada a la basílica gratuïta. Eviteu la cúpula, que és de pagament.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Basilique+du+Sacre-Coeur+de+Montmartre" target="_blank">📍 Mapa</a><a class="btn" href="https://www.sacre-coeur-montmartre.com/" target="_blank">Web</a></div></div></div>
+<div class="stop rest"><div class="time">11:00</div><div><b>☕ Pausa i mirador</b><div class="route">Escales/places de Montmartre. Si el pendent cansa, utilitzeu bus per a part del trajecte.</div></div></div>
+<div class="stop"><div class="time">11:30</div><div><b>Place du Tertre + carrers antics</b><div class="route">Rue Norvins · Place du Tertre · Saint-Vincent. Passeig sense presses.</div></div></div>
+<div class="stop"><div class="time">13:00</div><div><b>Dinar assequible a Montmartre</b></div></div>
+<div class="stop"><div class="time">14:30</div><div><b>Descens cap a Pigalle</b><div class="route">Ruta principal sense buscar els carrers més costeruts. Podeu fer un tram amb bus.</div></div></div>
+<div class="stop"><div class="time">15:30</div><div><b>Musée de la Vie Romantique</b> <span class="free">· COL·LECCIÓ PERMANENT GRATUÏTA</span><div class="route">Obert habitualment de dimarts a diumenge, 10–18 h. Comproveu que no hi hagi canvi excepcional abans de sortir.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Musee+de+la+Vie+Romantique+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop rest"><div class="time">17:00</div><div><b>☕ Pausa / retorn</b><div class="route">Metro o bus cap al Barri Llatí.</div></div></div>
+<div class="stop"><div class="time">19:00</div><div><b>Sopar prop de l'hotel</b></div></div>
+</div></div>
+</section>
+
+<section id="dia3" class="day">
+<div class="dayhead"><span class="daynum">DIJOUS 19</span><h2>🏘️ Marais · Carnavalet · història de París</h2></div>
+<div class="card"><div class="timeline">
+<div class="stop"><div class="time">08:00</div><div><b>Sortida cap al Marais</b><div class="route">Metro fins a Saint-Paul o Hôtel de Ville.</div></div></div>
+<div class="stop"><div class="time">09:00</div><div><b>Place des Vosges</b><div class="route">Un dels conjunts de places més elegants de París. Passeig pels porxos.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Place+des+Vosges+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">10:00</div><div><b>Musée Carnavalet – Histoire de Paris</b> <span class="free">· GRATUÏT</span><div class="route">Col·leccions permanents gratuïtes. Ideal per entendre la història de París. Horari habitual: dimarts–diumenge 10–18 h.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Musee+Carnavalet+Paris" target="_blank">📍 Mapa</a><a class="btn" href="https://carnavalet.paris.fr/" target="_blank">Web</a></div></div></div>
+<div class="stop rest"><div class="time">11:45</div><div><b>☕ Pausa als jardins/places del Marais</b></div></div>
+<div class="stop"><div class="time">12:15</div><div><b>Rue des Rosiers + barri jueu</b><div class="route">Passeig curt i pla, amb temps per mirar botigues i façanes.</div></div></div>
+<div class="stop"><div class="time">13:15</div><div><b>Dinar econòmic</b></div></div>
+<div class="stop"><div class="time">14:30</div><div><b>Hôtel de Ville + Sena</b><div class="route">Passeig exterior i fotografies. Si voleu, creueu cap a l'Île Saint-Louis.</div></div></div>
+<div class="stop"><div class="time">15:30</div><div><b>Île Saint-Louis</b><div class="route">Carrers tranquils, façanes històriques i bancs per descansar.</div></div></div>
+<div class="stop"><div class="time">16:30</div><div><b>Retorn tranquil</b></div></div>
+<div class="stop"><div class="time">19:00</div><div><b>Sopar prop de l'hotel</b></div></div>
+</div></div>
+</section>
+
+<section id="dia4" class="day">
+<div class="dayhead"><span class="daynum">DIVENDRES 20</span><h2>🧺 Mercat · Saint-Germain · Luxemburg</h2></div>
+<div class="card"><div class="timeline">
+<div class="stop"><div class="time">08:00</div><div><b>Esmorzar i sortida</b></div></div>
+<div class="stop"><div class="time">09:00</div><div><b>Marché Mouffetard / Rue Mouffetard</b><div class="route">Ambient de barri, botigues i productes locals. Els horaris dels mercats poden variar; confirmeu la parada concreta el dia abans.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Rue+Mouffetard+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">10:30</div><div><b>Arènes de Lutèce</b> <span class="free">· GRATUÏTES</span><div class="route">Restes romanes poc conegudes i molt fàcils de combinar amb el Barri Llatí.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Arenes+de+Lutece+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop rest"><div class="time">11:30</div><div><b>☕ Pausa</b><div class="route">Place de la Contrescarpe o Jardin des Plantes.</div></div></div>
+<div class="stop"><div class="time">12:00</div><div><b>Jardin des Plantes</b> <span class="free">· ESPAI PÚBLIC GRATUÏT</span><div class="route">Passeig sense entrar als espais de pagament.</div></div></div>
+<div class="stop"><div class="time">13:15</div><div><b>Dinar</b></div></div>
+<div class="stop"><div class="time">14:30</div><div><b>Saint-Germain-des-Prés</b><div class="route">Église Saint-Germain-des-Prés, plaça i carrers de llibreries. Entrada a l'església, subjecta al culte, gratuïta.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Eglise+Saint-Germain-des-Pres+Paris" target="_blank">📍 Mapa</a></div></div></div>
+<div class="stop"><div class="time">15:30</div><div><b>Petit Palais</b> <span class="free">· COL·LECCIÓ PERMANENT GRATUÏTA</span><div class="route">Si encara teniu energia i voleu art. Obert dimarts–diumenge 10–18 h; divendres té nocturna per a temporals, però les temporals són de pagament. La col·lecció permanent continua sent gratuïta.</div><div class="actions"><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Petit+Palais+Paris" target="_blank">📍 Mapa</a><a class="btn" href="https://www.petitpalais.paris.fr/" target="_blank">Web</a></div></div></div>
+<div class="stop"><div class="time">17:30</div><div><b>Retorn a l'hotel</b><div class="route">Final de ruta a les portes de la nit.</div></div></div>
+<div class="stop"><div class="time">19:00</div><div><b>Últim sopar a prop de l'hotel</b></div></div>
+</div></div>
+</section>
+
+<section id="menjar" class="card">
+<h2>🍽️ Menjar sense complicacions</h2>
+<div class="grid">
+<div><h3>🥞 La Petite Bouclerie</h3><p>Crêperie, 33 rue de la Harpe. Bona opció informal i molt cèntrica.</p><p class="small">Preus i carta poden variar.</p><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=La+Petite+Bouclerie+33+Rue+de+la+Harpe+Paris" target="_blank">📍 Mapa</a></div>
+<div><h3>🍲 Le Petit Châtelet</h3><p>39 rue de la Bûcherie. Cuina francesa, a prop del Sena.</p><p class="small">Uns 30–40 € segons dades actuals; reservar si us interessa.</p><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Le+Petit+Chatelet+39+Rue+de+la+Bucherie+Paris" target="_blank">📍 Mapa</a></div>
+<div><h3>🥣 Le Bistro des Augustins</h3><p>39 Quai des Grands Augustins. Opció més econòmica, molt útil per un dinar senzill.</p><p class="small">Uns 10–20 € segons dades actuals.</p><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Le+Bistro+des+Augustins+39+Quai+des+Grands+Augustins+Paris" target="_blank">📍 Mapa</a></div>
+<div><h3>🍷 Le Vieux Bistrot</h3><p>54 Rue Mouffetard. Ideal per al dia del barri Mouffetard.</p><p class="small">Uns 20–40 € segons dades actuals.</p><a class="btn primary" href="https://www.google.com/maps/search/?api=1&query=Le+Vieux+Bistrot+54+Rue+Mouffetard+Paris" target="_blank">📍 Mapa</a></div>
+</div>
+<div class="warn"><b>Per als sopars:</b> prioritat a llocs caminant de l'hotel. No he plantejat sopars llunyans perquè heu demanat poder tornar a peu després de les 19 h.</div>
+</section>
+
+<section id="frances" class="card">
+<h2>🇫🇷 Targeta de francès — amb pronunciació aproximada</h2>
+<p class="small">La pronunciació és orientativa perquè us serveixi per fer-vos entendre, no per parlar francès perfecte.</p>
+<div class="phrase"><b>Bonjour</b><span>Bon dia / Hola</span><b>bon-jur</b></div>
+<div class="phrase"><b>Bonsoir</b><span>Bona tarda / nit</span><b>bon-suàr</b></div>
+<div class="phrase"><b>S'il vous plaît</b><span>Si us plau</span><b>sil vu plè</b></div>
+<div class="phrase"><b>Merci beaucoup</b><span>Moltes gràcies</span><b>mersi bocú</b></div>
+<div class="phrase"><b>Excusez-moi</b><span>Perdoni</span><b>excüsé-muà</b></div>
+<div class="phrase"><b>Parlez-vous espagnol ?</b><span>Parla espanyol?</span><b>parlé-vu espanyol?</b></div>
+<div class="phrase"><b>Je ne parle pas bien français</b><span>No parlo gaire bé francès</span><b>je ne parl pa bian fransè</b></div>
+<div class="phrase"><b>Où sont les toilettes ?</b><span>On són els lavabos?</span><b>u son le tualet?</b></div>
+<div class="phrase"><b>Combien ça coûte ?</b><span>Quant costa?</span><b>com-bian sa cut?</b></div>
+<div class="phrase"><b>L'addition, s'il vous plaît</b><span>El compte, si us plau</span><b>la-di-sion, sil vu plè</b></div>
+<div class="phrase"><b>Nous sommes cinq</b><span>Som cinc</span><b>nu som sank</b></div>
+<div class="phrase"><b>Nous avons une réservation</b><span>Tenim una reserva</span><b>nu za-von ün rezer-va-sion</b></div>
+</section>
+
+<section id="mapa" class="card">
+<h2>🗺️ Mapa interactiu de tota la ruta</h2>
+<p>Feu clic sobre qualsevol marcador per veure el lloc. El mapa inclou <b>visites, hotels i restaurants</b> de la guia.</p>
+<div class="maplegend">
+<span class="legend">🏛️ Visites</span><span class="legend">🏨 Hotels</span><span class="legend">🍽️ Restaurants</span>
+</div>
+<div id="parisMap"></div>
+<div class="small" style="margin-top:9px">El mapa necessita connexió a internet per carregar els mapes i els marcadors.</div>
+</section>
+<h2>📍 Mapa ràpid de punts clau</h2>
+<div class="grid">
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Quartier+Latin+Paris" target="_blank">Quartier Latin</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Notre-Dame+de+Paris" target="_blank">Notre-Dame</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Sacre-Coeur+Paris" target="_blank">Sacré-Cœur</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Musee+Carnavalet+Paris" target="_blank">Carnavalet</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Petit+Palais+Paris" target="_blank">Petit Palais</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Jardin+du+Luxembourg+Paris" target="_blank">Luxemburg</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Place+des+Vosges+Paris" target="_blank">Place des Vosges</a>
+<a class="btn" href="https://www.google.com/maps/search/?api=1&query=Rue+Mouffetard+Paris" target="_blank">Mouffetard</a>
+</div>
+</section>
+
+<section class="card">
+<h2>🆓 Què queda fora perquè la ruta sigui realment gratuïta?</h2>
+<table>
+<tr><th>Lloc</th><th>Decisió</th></tr>
+<tr><td>Louvre</td><td>❌ No inclòs: no és una visita gratuïta general en aquestes dates i el dimarts està tancat.</td></tr>
+<tr><td>Torre Eiffel</td><td>👀 Exterior i miradors urbans sí; pujar-hi no.</td></tr>
+<tr><td>Arc de Triomf</td><td>👀 Exterior sí; interior/cim no.</td></tr>
+<tr><td>Sainte-Chapelle</td><td>❌ Interior no: la gratuïtat habitual del primer diumenge de novembre ja no coincideix amb les dates del viatge.</td></tr>
+<tr><td>Panthéon</td><td>👀 Exterior sí; interior de pagament.</td></tr>
+<tr><td>Notre-Dame</td><td>✅ Interior de la catedral gratuït; torres de pagament.</td></tr>
+<tr><td>Musées de Paris Musées</td><td>✅ Col·leccions permanents gratuïtes en la majoria dels museus municipals.</td></tr>
+</table>
+</section>
+
+<section class="card">
+<h2>🧳 Checklist final</h2>
+<ul>
+<li>👟 Calçat còmode i impermeable: 5–8 km/dia.</li>
+<li>🧥 Jaqueta impermeable i capes: novembre pot ser fred i humit.</li>
+<li>🔋 Bateria externa per al mòbil.</li>
+<li>📱 Desar aquesta pàgina al mòbil abans de sortir.</li>
+<li>🎫 Per Notre-Dame: reservar franja gratuïta si la disponibilitat ho permet.</li>
+<li>🏨 Abans de pagar l'hotel: confirmar les 3 habitacions + esmorzar inclòs + 17–20 novembre.</li>
+<li>🚇 Comprovar incidències de transport la mateixa matinada.</li>
+</ul>
+</section>
+</main>
+
+<footer>
+<div class="wrap">
+<b>Guia preparada per al viatge de 5 amics · París, 17–20 novembre 2026</b>
+<p class="small" style="color:#bfc8d8">Informació contrastada principalment amb fonts oficials de la Ville de Paris, Paris Musées, museus i webs oficials d'allotjaments. Els horaris i les condicions poden canviar: confirmeu els punts sensibles 24–48 h abans.</p>
+</div>
+</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+ const map=L.map('parisMap').setView([48.8566,2.3522],13);
+ L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+   maxZoom:19, attribution:'© OpenStreetMap contributors'
+ }).addTo(map);
+
+ const places=[
+  ['🏨','Hôtel Saint-Christophe','Hotel · 17 rue Lacépède',[48.8437,2.3545]],
+  ['🏨','Hôtel Jardin de Cluny','Hotel · 9 rue du Sommerard',[48.8507,2.3460]],
+  ['🏨','Hôtel des Grandes Écoles','Hotel · 75 rue Cardinal Lemoine',[48.8448,2.3508]],
+  ['🏛️','Notre-Dame de Paris','Dia 1 · visita gratuïta',[48.8530,2.3499]],
+  ['🏛️','Place Saint-Michel','Dia 1 · exterior',[48.8530,2.3448]],
+  ['🏛️','Hôtel de Ville','Dia 1 · exterior',[48.8560,2.3522]],
+  ['🌳','Jardin du Luxembourg','Dia 1 · espai públic',[48.8462,2.3372]],
+  ['🎨','Place des Abbesses','Dia 2 · Montmartre',[48.8840,2.3387]],
+  ['⛪','Sacré-Cœur','Dia 2 · entrada gratuïta',[48.8867,2.3431]],
+  ['🎨','Place du Tertre','Dia 2 · Montmartre',[48.8867,2.3400]],
+  ['🏛️','Musée de la Vie Romantique','Dia 2 · permanent gratuïta',[48.8810,2.3332]],
+  ['🏛️','Place des Vosges','Dia 3 · Marais',[48.8555,2.3653]],
+  ['🏛️','Musée Carnavalet','Dia 3 · permanent gratuïta',[48.8570,2.3621]],
+  ['🏘️','Rue des Rosiers','Dia 3 · Marais',[48.8575,2.3598]],
+  ['🏛️','Île Saint-Louis','Dia 3 · passeig',[48.8517,2.3572]],
+  ['🧺','Rue Mouffetard','Dia 4 · mercat/barri',[48.8419,2.3500]],
+  ['🏛️','Arènes de Lutèce','Dia 4 · gratuït',[48.8450,2.3518]],
+  ['🌳','Jardin des Plantes','Dia 4 · espai públic',[48.8430,2.3600]],
+  ['⛪','Église Saint-Germain-des-Prés','Dia 4 · església',[48.8539,2.3334]],
+  ['🎨','Petit Palais','Dia 4 · permanent gratuïta',[48.8660,2.3130]],
+  ['🍽️','La Petite Bouclerie','Restaurant · 33 rue de la Harpe',[48.8522,2.3430]],
+  ['🍽️','Le Petit Châtelet','Restaurant · 39 rue de la Bûcherie',[48.8525,2.3463]],
+  ['🍽️','Le Bistro des Augustins','Restaurant · 39 Quai des Grands Augustins',[48.8534,2.3417]],
+  ['🍽️','Le Vieux Bistrot','Restaurant · 54 rue Mouffetard',[48.8405,2.3490]]
+ ];
+ places.forEach(p=>{
+   const [icon,name,desc,coord]=p;
+   L.marker(coord).addTo(map).bindPopup('<b>'+icon+' '+name+'</b><br>'+desc);
+ });
+ const group=L.featureGroup(places.map(p=>L.marker(p[3])));
+ map.fitBounds(group.getBounds().pad(0.08));
+});
+</script>
+</body>
+</html>
